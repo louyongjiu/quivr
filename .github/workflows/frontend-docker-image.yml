@@ -60,7 +60,14 @@ jobs:
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
           context: frontend
-          build-args: THREADS=1
+          build-args: |
+            THREADS=1
+            NEXT_PUBLIC_ENV=local
+            NEXT_PUBLIC_BACKEND_URL=http://localhost:5050
+            NEXT_PUBLIC_SUPABASE_URL=http://localhost:54321
+            NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0
+            NEXT_PUBLIC_CMS_URL=https://cms.quivr.app
+            NEXT_PUBLIC_FRONTEND_URL=http://localhost:*
           platforms: linux/amd64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
