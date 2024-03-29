@@ -81,6 +81,8 @@ class HeadlessQA(BaseModel, QAInterface):
         api_base = None
         if self.brain_settings.ollama_api_base_url and model.startswith("ollama"):
             api_base = self.brain_settings.ollama_api_base_url
+        elif self.brain_settings.openai_api_base_url:
+            api_base = self.brain_settings.openai_api_base_url
 
         return ChatLiteLLM(
             temperature=temperature,

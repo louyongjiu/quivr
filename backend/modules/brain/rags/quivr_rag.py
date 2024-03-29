@@ -107,6 +107,8 @@ class QuivrRAG(BaseModel):
             return OllamaEmbeddings(
                 base_url=self.brain_settings.ollama_api_base_url
             )  # pyright: ignore reportPrivateUsage=none
+        elif self.brain_settings.openai_api_base_url:
+            return OpenAIEmbeddings(base_url=self.brain_settings.openai_api_base_url,)
         else:
             return OpenAIEmbeddings()
 
@@ -183,6 +185,8 @@ class QuivrRAG(BaseModel):
         api_base = None
         if self.brain_settings.ollama_api_base_url and model.startswith("ollama"):
             api_base = self.brain_settings.ollama_api_base_url
+        elif self.brain_settings.openai_api_base_url:
+            api_base = self.brain_settings.openai_api_base_url
 
         return ChatLiteLLM(
             temperature=temperature,
@@ -217,6 +221,8 @@ class QuivrRAG(BaseModel):
         api_base = None
         if self.brain_settings.ollama_api_base_url and self.model.startswith("ollama"):
             api_base = self.brain_settings.ollama_api_base_url
+        elif self.brain_settings.openai_api_base_url:
+            api_base = self.brain_settings.openai_api_base_url
 
         standalone_question = {
             "standalone_question": {
