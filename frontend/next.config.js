@@ -63,6 +63,7 @@ const ContentSecurityPolicy = {
     process.env.NEXT_PUBLIC_SUPABASE_URL,
     process.env.NEXT_PUBLIC_BACKEND_URL,
     process.env.NEXT_PUBLIC_CMS_URL,
+    process.env.OPENAI_API_BASE_URL,
     "*.intercom.io",
     "*.intercomcdn.com",
     "https://*.octolane.com",
